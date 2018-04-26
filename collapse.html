@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/icon.css"/>
+		<script src="easyui1.5.5/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="easyui1.5.5/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="easyui-accordion" style="width: 300px;height: 200px;">
+			<div title="About Accordion" iconcls="icon-ok" style="overflow: auto;padding: 10px;">
+				<h3 style="color: #0099ff;">Accordion for jquery</h3>
+				<p>Accordion is a part of easyui framework for jQuery. It lets you define 
+					your accordion component on web page more easily.</p>
+			</div>
+			<div title="about" iconcls="icon-reload" selected="true" style="padding:10px;">
+				easyui help you build your web page easily
+			</div>
+			<div title="Tree Menu">
+				<ul id="tt1" class="easyui-tree">
+					<li iconcls="icon-help">
+						<span>Folder1</span>
+						<ul>
+							<li>
+								<span>sub folder 1</span>
+								<ul>
+									<li><span>file 11</span></li>
+									<li><span>file 12</span></li>
+									<li><span>file 13</span></li>
+								</ul>
+							</li>
+							<li>
+								File2
+							</li>
+							<li>File3</li>
+						</ul>
+					</li>
+					<li><span>File21</span></li>
+				</ul>
+			</div>
+			<div id="test" title="test">
+				<!--
+                	看起来只要在tree menu 下加上一个div 并设置title 值就可以加入一个项了
+                -->
+			</div>
+		</div>
+	</body>
+</html>
