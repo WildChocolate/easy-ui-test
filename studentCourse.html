@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/icon.css"/>
+		<script src="easyui1.5.5/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="easyui1.5.5/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.left{
+				float: left;
+				margin: 50px;
+			}
+			
+		</style>
+	</head>
+	<body>
+	<div class="left">
+        <table>
+            <tr>
+                <td><div class="item">English</div></td>
+            </tr>
+            <tr>
+                <td><div class="item">Science</div></td>
+            </tr>
+            <tr>
+                <td><div class="item">Nature</div></td>
+            </tr>
+            <tr>
+                <td><div class="item">Chinese</div></td>
+            </tr>
+            <tr>
+                <td><div class="item">Math</div></td>
+            </tr>
+            <tr>
+                <td><div class="item">Physics</div></td>
+            </tr>
+            <!-- other subjects -->
+        </table>
+    </div>
+	<div class="right">
+		<table>
+			<tr>
+				<td class="blank"></td>
+				<td class="title">Monday</td>
+				<td class="title">Tuesday</td>
+				<td class="title">Wednesday</td>
+				<td class="title">Thursday</td>
+				<td class="title">Friday</td>
+			</tr>
+			<tr>
+				<td class="time">08:00</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<tr>
+				<td class="time">09:45</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<tr>
+				<td class="time">10:15</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<tr>
+				<td class="time">12:00</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<tr>
+				<td class="time">13:00</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<tr>
+				<td class="time">15:00</td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+				<td class="drop"></td>
+			</tr>
+			<!-- other cells -->
+		</table>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.left .item').draggable({
+	        revert:true,
+	        proxy:'clone'
+	    });
+	    $('.right td.drop').droppable({
+	    	onDragEnter:function(){
+	    		$(this).addClass("over");
+	    	},
+	    	onDragLeave:function(){
+	    		$(this).removeClass("over");
+	    	},
+	    	onDrop:function(e, source){
+	    		$(this).removeClass('over');
+	    		if($(source).hasClass("assigned")){
+	    			alert("if");
+	    			$(this).append(source);
+	    		}
+	    		else{
+	    			alert("else");
+	    			var c = $(source).clone().addClass("assigned");
+	    			$(this).empty().append(c);
+	    			c.draggable({
+	    				revert:true
+	    			});
+	    		}
+	    	}
+	    });
+	});
+	</script>
+	</body>
+</html>

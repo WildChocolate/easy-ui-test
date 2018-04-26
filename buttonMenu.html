@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/icon.css"/>
+		<script src="easyui1.5.5/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="easyui1.5.5/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	    <div style="background:#fafafa;padding:5px;width:200px;border:1px solid #ccc">
+			<a href="#" class="easyui-menubutton" menu="#mm1" iconCls="icon-edit">Edit</a>
+			<a href="#" class="easyui-menubutton" menu="#mm2" iconCls="icon-help">Help</a>
+		</div>
+		<div id="mm1" style="width: 150px;">
+			<div iconcls="icon-undo">Undo</div>
+			<div iconcls="icon-redo">Redo</div>
+			<div class="menu-sep"></div>
+			<div>Cut</div>
+			<div>Copy</div>
+			<div>Paste</div>
+			<div class="menu-sep"></div>
+			<div class="icon-remove">Delete</div>
+			<div>Select All</div>
+		</div>
+		<div id="mm2" style="width: 100px;">
+			<div>Help</div>
+			<div>Update</div>
+			<div>About</div>
+		</div>
+		<a href="javascript:void(0)" id="mb" class="easyui-menubutton">Edit</a>   
+		<div id="mm" style="width:150px;">   
+		    <div iconCls='icon-undo'>Undo</div>   
+		    <div iconCls='icon-redo'>Redo</div>   
+		    <div class="menu-sep"></div>   
+		    <div iconCls='icon-cut'>Cut</div>   
+		    <div>Copy</div>   
+		    <div>Paste</div>   
+		    <div class="menu-sep"></div>   
+		    <div data-options="iconCls:'icon-remove'">Delete</div>   
+		    <div>Select All</div>   
+		</div>  
+		<script type="text/javascript">
+			$('#mb').menubutton({    
+			    iconCls: 'icon-edit',    
+			    menu: '#mm',
+			    onClick:function(item){
+			    	alert(item);
+			    }
+			});  
+					
+		</script>
+	</body>
+</html>

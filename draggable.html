@@ -73,27 +73,41 @@
 	                <img src="images/shirt6.png"/>
 	                <div>
 	                    <p>nike</p>
-	                    <p>Price:99</p>
+	                    <p>Price:$99</p>
 	                </div>
 	            </a>
 	        </li>
         <!-- other products -->
     	</ul>
-    	<div class="cart">
-        <h1>Shopping Cart</h1>
-        <table id="cartcontent" style="width:300px;height:auto;">
-            <thead>
-                <tr>
-                    <th field="name" width=140>Name</th>
-                    <th field="quantity" width=60 align="right">Quantity</th>
-                    <th field="price" width=60 align="right">Price</th>
-                </tr>
-            </thead>
-        </table>
-        <p class="total">Total: $0</p>
-        <h2>Drop here to add to cart</h2>
-    </div>
-    <script>
+    <div class="cart">
+	<h1>Shopping Cart</h1>
+	<table id="cartcontent" style="width:300px;height:auto;">
+		<thead>
+			<tr>
+				<th field="name" width=140>Name</th>
+				<th field="quantity" width=60 align="right">Quantity</th>
+				<th field="price" width=60 align="right">Price</th>
+				<th field="test" width=60 align="right">Price</th>
+			</tr>
+		</thead>
+	</table>
+	<p class="total">Total: $0</p>
+	<h2>Drop here to add to cart</h2>
+</div>
+    <script type="text/javascript">
+    	$(function(){
+    		$("#cartcontent").datagrid({
+    			width:1000,
+    			height:300,
+    			rownumbers:true,
+    			columns: [[
+		        { field: 'name', title:"name"},
+		        { field: 'quantity', title: 'quantity', width: 180, align: 'left' },
+		        { field: 'price', title: 'price', width: 150, align: 'left' }
+		    ]]
+
+    		});
+    	});
     	$(".item").draggable({
     		revert:true,
     		proxy: "clone",
@@ -103,9 +117,45 @@
     		},
     		onStopDrag:function(){
     			$(this).draggable("options").cursor="move";
-    			alert($(this).draggable("options").cursor);
     		}
     	});
+    	$(".cart").droppable({
+    		onDragEnter:function(e, source){
+    			$(source).draggable("options").cursor="auto";
+    		},
+    		onDragLeave:function(e, source){
+    			$(source).draggable('options').cursor="not-allow";
+    		},
+    		onDrop:function(e, source){
+    			var name = $(source).find("p:eq(0)").html();
+    			var price = $(source).find("p:eq(1)").html();
+    			addProduct(name, parseFloat(price.split("$")[1]));
+    			$("#cartcontent").datagrid("loadData", data);
+    		}
+    	});
+    	var data = {"total": 0, "rows":[]};
+    	var totalCost=0;
+    	function addProduct(name, price){
+    		function add(){
+    			for(var i=0; i<data.total;i++){
+    				var row = data.rows[i];
+    				if(row.name == name){
+    					row.quantity +=	1;
+    					return;
+    				}
+    			}
+    			data.total += 1;
+	    		data.rows.push({
+	    			name: name,
+	    			quantity:1,
+	    			price : price
+	    		});
+    		}
+    		add();
+    		totalCost+=price;
+    		
+        	$('div.cart .total').html('Total: $'+totalCost);
+    	}
     </script>
 	</body>
 </html>
