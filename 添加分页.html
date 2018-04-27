@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/icon.css"/>
+		<script src="easyui1.5.5/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="easyui1.5.5/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<table id="tt" class="easyui-datagrid" style="width: 600px;height: 250px;"
+			title="Load Data" iconCls="icon-save"
+			rownumbers="true" pagination="true">
+			<thead>
+				<tr>
+					<th field="Name">Name</th>
+					<th field="Number">Number</th>
+				</tr>
+			</thead>
+		</table>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$.ajax({
+	            type: "post",
+	            url: "http://localhost:10020/WebServiceDemo.asmx/GetTwoStudent",
+	            dataType: 'json',
+	            data: null,
+	            success: function (data) {
+//	            	var data = $.parseJSON(data);
+//	            	alert(data);
+	            	$('#tt').datagrid("loadData", data); 
+	                
+	            },
+	            error: function (XMLHttpRequest, textStatus, errorThrown) {
+	                console.log(XMLHttpRequest);
+	                alert('error:' + errorThrown);
+	            }
+	        });
+		});
+		</script>
+	</body>
+</html>

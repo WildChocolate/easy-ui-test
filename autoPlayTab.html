@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/default/easyui.css"/>
+		<link rel="stylesheet" type="text/css" href="easyui1.5.5/themes/icon.css"/>
+		<script src="easyui1.5.5/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="easyui1.5.5/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="tt" class="eayui-tabs" style="width:330px;height:270px">
+			<div title="Shirt1" style="padding:20px;"><img src="images/shirt1.png" alt="" /></div>
+			<div title="Shirt2" style="padding:20px;"><img src="images/shirt2.png" alt="" /></div>
+			<div title="Shirt3" style="padding:20px;"><img src="images/shirt3.png" alt="" /></div>
+			<div title="Shirt4" style="padding:20px;"><img src="images/shirt4.png" alt="" /></div>
+			<div title="Shirt5" style="padding:20px;"><img src="images/shirt5.png" alt="" /></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$("#tt").tabs();
+			var index = 0;
+			var t = $('#tt');
+			var tabs = t.tabs('tabs');
+			setInterval(function(){
+				t.tabs('select', tabs[index].panel('options').title);
+				index++;
+				if (index >= tabs.length){
+					index = 0;
+				}
+			}, 2000);
+		});
+			
+		
+	</script>
+</html>
